@@ -4,19 +4,24 @@ namespace hackers_poulette\controller;
 
 use PDO;
 
+print_r(getenv('MYSQL_ROOT_PASSWORD'));
+print_r(getenv('MYSQL_DATABASE'));
+
 const HOST_NAME	= "mysql";
-const DB_NAME	= "database";
 const USER_NAME	= "root";
-const PASSWORD	= "<root-password>";
 const TABLE = "User_issues";
 
 class IssuesDatabase
 {
     private static function connect(){
+
+        $password = getenv('MYSQL_ROOT_PASSWORD');
+        $database = getenv('MYSQL_DATABASE');
+
         try {
-            $strConnection = "mysql:host=".HOST_NAME.";dbname=".DB_NAME;
+            $strConnection = "mysql:host=".HOST_NAME.";dbname=".$database;
             $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-            $pdo = new PDO($strConnection, USER_NAME, PASSWORD, $arrExtraParam); // Instanciate connexion
+            $pdo = new PDO($strConnection, USER_NAME, $password, $arrExtraParam); // Instanciate connexion
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo 'success';
             return $pdo;
