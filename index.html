@@ -8,12 +8,14 @@
 </head>
 <body>
   <h1>Tell us about your issue.</h1>
-  <form action="" method="post">
+  <form method="post" name="contact_form"
+        action="/form_process.php">
     <input type="text" name="name" id="form_name">
     <input type="text" name="first_name" id="form_first_name">
     <input type="email" name="e_mail" id="form_e_mail">
     <input type="file" name="file" id="form_file">
     <textarea name="description" id="form_description" cols="30" rows="10"></textarea>
+    <input type="submit" name="submit" value="Submit issue">
   </form>
 </body>
 </html>
