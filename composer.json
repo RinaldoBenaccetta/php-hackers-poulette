@@ -1,0 +1,14 @@
+{
+  "name": "rinaldo/hackers_poulette",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "rinaldo",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}
