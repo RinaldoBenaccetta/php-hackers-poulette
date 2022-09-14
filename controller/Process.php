@@ -3,14 +3,16 @@
 namespace hackers_poulette\controller;
 
 use hackers_poulette\controller\IssuesDatabase;
+use hackers_poulette\controller\validateInputs;
 
 class Process
 {
     public function __construct()
     {
-        echo "hello";
-        print_r($_POST);
-        IssuesDatabase::createIssue($_POST);
-    }
+        $validData = validateInputs::validate($_POST);
 
+        if ($validData) {
+            IssuesDatabase::createIssue($validData);
+        }
+    }
 }
