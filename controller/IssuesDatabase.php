@@ -16,6 +16,7 @@ class IssuesDatabase
         $database = getenv('MYSQL_DATABASE');
         $user = getenv('MYSQL_USER');
 
+        echo 'test';
         echo getenv();
 
         try {
