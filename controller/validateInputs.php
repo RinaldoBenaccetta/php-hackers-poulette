@@ -2,6 +2,8 @@
 
 namespace hackers_poulette\controller;
 
+const DEFAULT_STATUS = 'pending';
+
 class validateInputs
 {
     public static function validate($data) {
@@ -15,6 +17,7 @@ class validateInputs
                 'lastName' => self::isString($data['first_name']),
                 'eMail' => self::isEmail($data['e_mail']),
                 'description' => self::isString($data['description']),
+                'status' => DEFAULT_STATUS,
             ];
 
             return self::validData($validInputs) ? $validInputs : NULL;
