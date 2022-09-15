@@ -14,11 +14,12 @@ class IssuesDatabase
 
         $password = getenv('MYSQL_ROOT_PASSWORD');
         $database = getenv('MYSQL_DATABASE');
+        $user = getenv('MYSQL_USER');
 
         try {
             $strConnection = "mysql:host=".HOST_NAME.";dbname=".$database;
             $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-            $pdo = new PDO($strConnection, USER_NAME, $password, $arrExtraParam); // Instanciate connexion
+            $pdo = new PDO($strConnection, $user, $password, $arrExtraParam); // Instanciate connexion
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo 'success';
             return $pdo;
