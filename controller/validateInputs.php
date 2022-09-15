@@ -13,7 +13,7 @@ class validateInputs
             $validInputs = [
                 'name' =>  self::isString($data['name']),
                 'lastName' => self::isString($data['first_name']),
-                'eMail' => self::isEmail($data['e_mail']) ,
+                'eMail' => self::isEmail($data['e_mail']),
                 'description' => self::isString($data['description']),
             ];
 

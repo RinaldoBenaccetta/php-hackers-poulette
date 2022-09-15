@@ -4,9 +4,6 @@ namespace hackers_poulette\controller;
 
 use PDO;
 
-print_r(getenv('MYSQL_ROOT_PASSWORD'));
-print_r(getenv('MYSQL_DATABASE'));
-
 const HOST_NAME	= "mysql";
 const USER_NAME	= "root";
 const TABLE = "User_issues";
