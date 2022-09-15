@@ -16,6 +16,8 @@ class IssuesDatabase
         $database = getenv('MYSQL_DATABASE');
         $user = getenv('MYSQL_USER');
 
+        echo getenv();
+
         try {
             $strConnection = "mysql:host=".HOST_NAME.";dbname=".$database;
             $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
