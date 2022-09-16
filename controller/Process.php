@@ -11,10 +11,12 @@ class Process
 {
     public function __construct()
     {
-        $validData = validateInputs::validate($_POST);
-        image::upload();
+        $imageDestination = image::upload();
 
-        if ($validData) {
+        $validData = validateInputs::validate($_POST);
+
+        if ($validData && $imageDestination) {
+            $validData['imageDestination'] = $imageDestination;
             IssuesDatabase::createIssue($validData);
         }
     }

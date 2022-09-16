@@ -34,13 +34,14 @@ class IssuesDatabase
         $pdo = self::connect();
 
         if ($pdo) {
-            $query = $pdo->prepare("INSERT INTO ".TABLE." (Name, Last_name, E_mail, Description, Status) VALUES (:name, :lastName, :eMail, :description, :status);");
+            $query = $pdo->prepare("INSERT INTO ".TABLE." (Name, Last_name, E_mail, Description, Status, Image_destination) VALUES (:name, :lastName, :eMail, :description, :status, :imageDestination);");
             $query->execute([
                 ":name" => "$data[name]",
                 ":lastName" => "$data[lastName]",
                 ":eMail" => "$data[eMail]",
                 ":description" => "$data[description]",
-                ":status" => "$data[status]"
+                ":status" => "$data[status]",
+                ":imageDestination" => "$data[imageDestination]",
             ]);
 
             $pdo = NULL;
