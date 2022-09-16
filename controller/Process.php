@@ -18,6 +18,8 @@ class Process
         if ($validData && $imageDestination) {
             $validData['imageDestination'] = $imageDestination;
             IssuesDatabase::createIssue($validData);
+        } else{
+            echo 'Something went wrong!';
         }
     }
 }

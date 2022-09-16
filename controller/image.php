@@ -44,8 +44,8 @@ class image
 //            $file = $_FILES['file']['tmp_name'];
         if (file_exists($file))
         {
-            $imagesizedata = getimagesize($file);
-            return $imagesizedata ? TRUE : FALSE;
+            $imageSizeData = getimagesize($file);
+            return $imageSizeData ? TRUE : FALSE;
         }
         else
         {
