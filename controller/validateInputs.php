@@ -7,7 +7,8 @@ const DEFAULT_STATUS = 'pending';
 class validateInputs
 {
     public static function validate($data) {
-        if (!empty($data['name'])
+        if (self::isNotSpam($data)
+            && !empty($data['name'])
             && !empty($data['first_name'])
             && !empty($data['e_mail'])
             && !empty($data['description'])
@@ -50,5 +51,11 @@ class validateInputs
         }
 
         return $data;
+    }
+
+    private static function isNotSpam($data) {
+        $honeyPotValue = $data['age'];
+
+        return !$honeyPotValue;
     }
 }
