@@ -15,6 +15,10 @@ class Process
 
         $validData = validateInputs::validate($_POST);
 
+        print_r($validData);
+        print_r($imageDestination);
+        print_r($_POST);
+
         if ($validData && $imageDestination) {
             $validData['imageDestination'] = $imageDestination;
             IssuesDatabase::createIssue($validData);

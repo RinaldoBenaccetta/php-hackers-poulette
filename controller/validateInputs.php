@@ -28,7 +28,7 @@ class validateInputs
     }
 
     private static function isString($input, $minMaxCharacters = ['min' => 2, 'max' => 255]) {
-        if (is_string($input) && $input >= $minMaxCharacters['min'] && $input <= $minMaxCharacters['max']) {
+        if (is_string($input) && strlen($input) >= $minMaxCharacters['min'] && strlen($input) <= $minMaxCharacters['max']) {
             return $input;
         } else {
             return NULL;
