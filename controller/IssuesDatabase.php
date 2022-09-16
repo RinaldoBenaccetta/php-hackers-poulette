@@ -21,11 +21,10 @@ class IssuesDatabase
             $arrExtraParam= array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
             $pdo = new PDO($strConnection, $user, $password, $arrExtraParam);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo 'success';
             return $pdo;
         }
         catch(PDOException $e) {
-            $msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
+            $msg = 'PDO error in ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
             die($msg);
         }
     }
@@ -33,8 +32,6 @@ class IssuesDatabase
     public static function createIssue($data): void
     {
         $pdo = self::connect();
-
-        var_dump($data);
 
         if ($pdo) {
             $query = $pdo->prepare("INSERT INTO ".TABLE." (Name, Last_name, E_mail, Description, Status) VALUES (:name, :lastName, :eMail, :description, :status);");

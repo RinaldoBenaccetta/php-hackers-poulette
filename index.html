@@ -9,7 +9,8 @@
 <body>
   <h1>Tell us about your issue.</h1>
   <form method="post" name="contact_form"
-        action="/form_process.php">
+        action="/form_process.php"
+        enctype="multipart/form-data">
 
     <div class="form__input__container" >
       <label for="form_name">Name : </label>
@@ -27,6 +28,12 @@
       <label for="form_e_mail">E mail : </label>
       <input type="email" name="e_mail" id="form_e_mail">
       <div class="form__input__message" id="form_e_mail_message"></div>
+    </div>
+
+    <div class="form__input__container" >
+      <label for="form_image">Image : </label>
+      <input type="file" accept="image/*" name="image" id="form_image">
+      <div class="form__input__message" id="form_image_message"></div>
     </div>
 
     <div class="form__input__container" >
