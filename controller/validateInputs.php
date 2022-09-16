@@ -17,7 +17,7 @@ class validateInputs
                 'name' =>  self::isString($data['name']),
                 'lastName' => self::isString($data['first_name']),
                 'eMail' => self::isEmail($data['e_mail']),
-                'description' => self::isString($data['description']),
+                'description' => self::isString($data['description'], ['min' => 2, 'max' => 1000]),
                 'status' => DEFAULT_STATUS,
             ];
 
@@ -27,8 +27,8 @@ class validateInputs
         }
     }
 
-    private static function isString($input) {
-        if (is_string($input) && $input != '') {
+    private static function isString($input, $minMaxCharacters = ['min' => 2, 'max' => 255]) {
+        if (is_string($input) && $input >= $minMaxCharacters['min'] && $input <= $minMaxCharacters['max']) {
             return $input;
         } else {
             return NULL;
