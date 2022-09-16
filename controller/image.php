@@ -13,15 +13,22 @@ class image
     public static function upload() {
         $fileName = $_FILES["image"]["name"];
         $tempName = $_FILES["image"]["tmp_name"];
-        $destination = self::getRandomName($fileName);
 
-        // https://stackoverflow.com/questions/20652487/move-uploaded-file-permission-denied
-        // chmod -R 777 images
-        if (move_uploaded_file($tempName, $destination)) {
-            return $destination;
+
+        if (self::validate($tempName)) {
+            $destination = self::getRandomName($fileName);
+
+            // https://stackoverflow.com/questions/20652487/move-uploaded-file-permission-denied
+            // chmod -R 777 images
+            if (move_uploaded_file($tempName, $destination)) {
+                return $destination;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
+
     }
 
     private static function getRandomName($sourceFileName) {
@@ -31,5 +38,18 @@ class image
         $extension = $file_parts['extension'];
 
         return $fileName.'.'.$extension;
+    }
+
+    private static function validate($file) {
+//            $file = $_FILES['file']['tmp_name'];
+        if (file_exists($file))
+        {
+            $imagesizedata = getimagesize($file);
+            return $imagesizedata ? TRUE : FALSE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 }
