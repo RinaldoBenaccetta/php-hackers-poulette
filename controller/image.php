@@ -7,15 +7,16 @@ namespace hackers_poulette\controller;
 //https://stackoverflow.com/questions/19083175/generate-random-string-in-php-for-file-name
 
 const IMAGE_FOLDER = './images/';
+const MAX_FILE_SIZE = 2097152;
 
 class image
 {
     public static function upload() {
         $fileName = $_FILES["image"]["name"];
         $tempName = $_FILES["image"]["tmp_name"];
+        $size =  $_FILES["image"]["size"];
 
-
-        if (self::validate($tempName)) {
+        if (self::validate($tempName, $size)) {
             $destination = self::getRandomName($fileName);
 
             // https://stackoverflow.com/questions/20652487/move-uploaded-file-permission-denied
@@ -40,9 +41,8 @@ class image
         return $fileName.'.'.$extension;
     }
 
-    private static function validate($file) {
-//            $file = $_FILES['file']['tmp_name'];
-        if (file_exists($file))
+    private static function validate($file, $size) {
+        if (file_exists($file) && ($size <= MAX_FILE_SIZE || $size != 0))
         {
             $imageSizeData = getimagesize($file);
             return $imageSizeData ? TRUE : FALSE;
