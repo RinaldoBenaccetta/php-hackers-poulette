@@ -15,13 +15,13 @@ class Process
 
         $validData = validateInputs::validate($_POST);
 
-        if ($validData && $imageDestination) {
+        if ($validData === "spam") {
+            // Tell to bot that all is ok.
+        header ('location: /success.html');
+        } elseif ($validData && $imageDestination) {
             $validData['imageDestination'] = $imageDestination;
             IssuesDatabase::createIssue($validData);
 
-            header ('location: /success.html');
-        } elseif ($validData === "spam") {
-            // Tell to bot that all is ok.
             header ('location: /success.html');
         }
         else{
