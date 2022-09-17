@@ -13,8 +13,10 @@ class IssuesDatabase
         $password = getenv('MYSQL_ROOT_PASSWORD');
         $database = getenv('MYSQL_DATABASE');
         $user = getenv('MYSQL_USER');
-        $host = "mysql";
-        $port = 3306;
+//        $host = "mysql";
+//        $port = 3306;
+        $host = getenv('MYSQL_HOST');
+        $port = getenv('MYSQL_PORT');
 
         try {
             $strConnection = "mysql:host=".$host.";port=".$port.";dbname=".$database;
