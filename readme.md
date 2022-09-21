@@ -5,7 +5,7 @@
 That is a fictive support contact form.
 This project was made in order to train on PHP, OOP and security.
 
-### Go to [Hackers Poulette](https://http://env-6560050.jcloud.ik-server.com/)
+### Go to [Hackers Poulette](http://env-6560050.jcloud.ik-server.com/)
 
 ## App. features
 
